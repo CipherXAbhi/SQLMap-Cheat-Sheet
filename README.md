@@ -47,5 +47,29 @@ so we use risk <br>
 ```
 sqlmap -u url --crawl 2 --batch --risk 1
 ```
+| Risk  | Description                                                                                                                                                                                           |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1** | Safe and low-impact payloads. Does not change data or affect performance. (Default)                                                                                                                   |
+| **2** | Medium risk. Includes **time-based payloads** and **more complex injections**. May slow down the server slightly.                                                                                     |
+| **3** | High risk. Includes **stacked queries**, **heavy time delays**, and **data-altering** payloads. May cause **server instability** or changes to the database (especially if write access is possible). |
+
 ---
-##level
+## level
+In SQLMap, the --level option controls how thorough and aggressive SQLMap is when testing different types of parameters for SQL injection.
+* The default level is 1.
+* Higher levels make SQLMap test more parameters and use more techniques.
+* It increases depth and coverage of the SQL injection test.
+```
+sqlmap -u url --crawl 2 --batch --level 1
+```
+## level breakdown
+| Level | Description                                                                                                |
+| ----- | ---------------------------------------------------------------------------------------------------------- |
+| **1** | Default. Tests **only basic GET/POST parameters**. Fastest and least intrusive.                            |
+| **2** | Also tests **headers like User-Agent and Referer**.                                                        |
+| **3** | Adds **more advanced and uncommon parameter types**, including cookies and multipart parameters.           |
+| **4** | Extends testing to **all possible inputs**, including deeper nested parameters.                            |
+| **5** | Most **aggressive**. Tries **everything possible**, even very unlikely parameters. Slowest and most noisy. |
+
+---
+
