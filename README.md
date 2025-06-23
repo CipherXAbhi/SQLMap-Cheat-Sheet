@@ -72,4 +72,19 @@ sqlmap -u url --crawl 2 --batch --level 1
 | **5** | Most **aggressive**. Tries **everything possible**, even very unlikely parameters. Slowest and most noisy. |
 
 ---
+## verbosity
+In SQLMap, the --verbosity option controls how much information is displayed in the terminal output during the scan. It’s useful for understanding what SQLMap is doing at each stage of the attack.
+| Level | Description                                                                                                 |
+| ----- | ----------------------------------------------------------------------------------------------------------- |
+| **0** | **Silent mode** – no output unless there's an error.                                                        |
+| **1** | Show **basic information** (default).                                                                       |
+| **2** | Show each **HTTP request** being sent.                                                                      |
+| **3** | Add **payloads** being tested.                                                                              |
+| **4** | Include **HTTP responses** as well.                                                                         |
+| **5** | Full **debug info** – includes extensive detail about payloads, detection, and results.                     |
+| **6** | **Extremely verbose** – shows **everything**, useful for debugging or learning how SQLMap works internally. |
 
+```
+sqlmap -u "http://example.com/page.php?id=1" --verbosity=3 --level=2 --risk=2
+
+```
